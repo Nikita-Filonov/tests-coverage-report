@@ -43,7 +43,7 @@ export class SettingsManager {
   }
 
   static getStaticFileUrl(file: string): string {
-    return `${this.repositoryUrl}/-/raw/main/static/${file}`;
+    return `${this.repositoryUrl}/main/static/${file}`;
   }
 }
 
