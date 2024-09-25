@@ -6,9 +6,7 @@ import IconButton from '@mui/material/IconButton';
 
 type ToolbarAction = {
   icon?: ReactNode;
-  content?: ReactNode;
   onClick?: () => void;
-  badgeContent?: ReactNode;
 };
 
 type BaseToolbarViewProps = {

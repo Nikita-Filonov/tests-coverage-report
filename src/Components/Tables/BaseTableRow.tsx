@@ -3,13 +3,13 @@ import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
 
-export type Cell = {
+export type TableRowCell = {
   value: ReactNode;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };
 
 type BaseTableRowProps = {
-  cells: Cell[];
+  cells: TableRowCell[];
 };
 
 export const BaseTableRow: FC<BaseTableRowProps> = ({ cells }) => {

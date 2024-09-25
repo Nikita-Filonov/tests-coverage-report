@@ -11,6 +11,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children, sx }) => {
   return (
     <Container
       sx={{
+        pb: 3,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',

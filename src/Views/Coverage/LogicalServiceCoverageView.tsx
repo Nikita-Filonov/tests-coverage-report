@@ -6,6 +6,10 @@ import { LogicalServiceCoverageProgress } from '../../Components/Progress/Covera
 import { MethodCoverageDetailsModal } from '../../Components/Modals/Coverage/MethodCoverageDetailsModal';
 import { MethodCoverage } from '../../Models/Coverage/MethodCoverage';
 import { useMethodCoverages } from '../../Providers/MethodCoveragesProvider';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import { useMethodCoveragesFilters } from '../../Providers/MethodCoveragesFiltersProvider';
+import { MethodCoveragesFiltersModal } from '../../Components/Modals/Coverage/MethodCoveragesFiltersModal';
+import { countNotNullValues } from '../../Services/Core/Utils';
 
 type LogicalServiceCoverageViewProps = {
   coverage: LogicalServiceCoverage;
@@ -14,20 +18,32 @@ type LogicalServiceCoverageViewProps = {
 export const LogicalServiceCoverageView: FC<LogicalServiceCoverageViewProps> = (props) => {
   const { coverage } = props;
   const { setMethodCoverage } = useMethodCoverages();
-  const [methodCoverageDetails, setMethodCoverageDetails] = useState(false);
+  const { filters, filteredCoverages } = useMethodCoveragesFilters();
+  const [methodCoverageDetailsModal, setMethodCoverageDetailsModal] = useState(false);
+  const [methodCoveragesFiltersModal, setMethodCoveragesFiltersModal] = useState(false);
 
   const onMethodCoverageDetails = (coverage: MethodCoverage) => {
     setMethodCoverage(coverage);
-    setMethodCoverageDetails(true);
+    setMethodCoverageDetailsModal(true);
   };
+
+  const onMethodCoveragesFilters = () => setMethodCoveragesFiltersModal(true);
 
   return (
     <WidgetView
       sx={{ mt: 3 }}
       title={coverage.logicalService}
-      label={<LogicalServiceCoverageProgress value={coverage.totalCoverage} />}>
-      <MethodCoveragesTable coverages={coverage.methods} onMethodCoverageDetails={onMethodCoverageDetails} />
-      <MethodCoverageDetailsModal modal={methodCoverageDetails} setModal={setMethodCoverageDetails} />
+      actions={[
+        { content: <LogicalServiceCoverageProgress value={coverage.totalCoverage} /> },
+        {
+          icon: <FilterAltOutlinedIcon />,
+          onClick: onMethodCoveragesFilters,
+          badgeContent: countNotNullValues(filters)
+        }
+      ]}>
+      <MethodCoveragesTable coverages={filteredCoverages} onMethodCoverageDetails={onMethodCoverageDetails} />
+      <MethodCoverageDetailsModal modal={methodCoverageDetailsModal} setModal={setMethodCoverageDetailsModal} />
+      <MethodCoveragesFiltersModal modal={methodCoveragesFiltersModal} setModal={setMethodCoveragesFiltersModal} />
     </WidgetView>
   );
 };

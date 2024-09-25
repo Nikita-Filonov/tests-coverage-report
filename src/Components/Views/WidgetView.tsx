@@ -1,18 +1,26 @@
 import { BasePaper } from './BasePaper';
 import Typography from '@mui/material/Typography';
 import { FC, ReactNode } from 'react';
-import { Box, Grid2, SxProps, Theme } from '@mui/material';
+import { Badge, Box, Grid2, SxProps, Theme } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+
+type WidgetAction = {
+  icon?: ReactNode;
+  content?: ReactNode;
+  onClick?: () => void;
+  badgeContent?: ReactNode;
+};
 
 type WidgetViewProps = {
   sx?: SxProps<Theme>;
   title?: string | ReactNode;
-  label?: ReactNode;
+  actions?: WidgetAction[];
   children?: ReactNode;
   childrenSx?: SxProps<Theme>;
 };
 
 export const WidgetView: FC<WidgetViewProps> = (props) => {
-  const { sx, title, label, children, childrenSx } = props;
+  const { sx, title, actions, children, childrenSx } = props;
 
   return (
     <BasePaper sx={sx}>
@@ -24,7 +32,21 @@ export const WidgetView: FC<WidgetViewProps> = (props) => {
             </Typography>
           )}
         </Grid2>
-        <Grid2>{label}</Grid2>
+        {actions?.map((action, index) => (
+          <Grid2 key={index}>
+            {action.icon ? (
+              <IconButton key={index} sx={{ mr: actions.length === index + 1 ? 0 : 2 }} onClick={action.onClick}>
+                <Badge badgeContent={action.badgeContent} color="primary">
+                  {action.icon}
+                </Badge>
+              </IconButton>
+            ) : (
+              <Box key={index} sx={{ mr: actions.length === index + 1 ? 0 : 2 }}>
+                {action.content}
+              </Box>
+            )}
+          </Grid2>
+        ))}
       </Grid2>
       <Box sx={childrenSx}>{children}</Box>
     </BasePaper>
