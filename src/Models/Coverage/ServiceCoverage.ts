@@ -1,3 +1,3 @@
 export interface ServiceCoverage {
-  totalCoverage: number;
+  totalCoverage?: number;
 }

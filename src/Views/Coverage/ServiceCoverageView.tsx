@@ -9,8 +9,8 @@ export const ServiceCoverageView = () => {
   return (
     <BaseGaugeChartView title={'Total service coverage'}>
       <BaseGaugeChart
-        value={serviceCoverage.totalCoverage}
-        color={getCoverageColor(serviceCoverage.totalCoverage)}
+        value={serviceCoverage.totalCoverage || 0}
+        color={getCoverageColor(serviceCoverage.totalCoverage || 0)}
         height={200}
         maxValue={100}
       />

@@ -1,6 +1,7 @@
 export interface ParameterCoverage {
-  covered: boolean;
+  covered?: boolean;
   parameter: string;
   parameters?: ParameterCoverage[];
-  deprecated: boolean;
+  deprecated?: boolean;
+  hasUncoveredParameters?: boolean;
 }

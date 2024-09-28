@@ -9,7 +9,7 @@ export const LogicalServiceCoveragesView = () => {
   return (
     <Box>
       {logicalServicesCoverage.map((coverage, index) => (
-        <MethodCoveragesFiltersProvider key={index} coverages={coverage.methods}>
+        <MethodCoveragesFiltersProvider key={index} coverages={coverage.methods || []}>
           <LogicalServiceCoverageView coverage={coverage} />
         </MethodCoveragesFiltersProvider>
       ))}

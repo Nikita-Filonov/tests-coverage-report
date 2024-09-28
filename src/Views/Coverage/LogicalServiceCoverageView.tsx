@@ -34,7 +34,7 @@ export const LogicalServiceCoverageView: FC<LogicalServiceCoverageViewProps> = (
       sx={{ mt: 3 }}
       title={coverage.logicalService}
       actions={[
-        { content: <LogicalServiceCoverageProgress value={coverage.totalCoverage} /> },
+        { content: <LogicalServiceCoverageProgress value={coverage?.totalCoverage || 0} /> },
         {
           icon: <FilterAltOutlinedIcon />,
           onClick: onMethodCoveragesFilters,

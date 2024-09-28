@@ -5,7 +5,7 @@ import { Theme } from '@mui/material';
 
 type DeprecatedIconsProps = {
   sx?: SxProps<Theme>;
-  deprecated: boolean;
+  deprecated?: boolean;
 };
 
 export const DeprecatedIcons: FC<DeprecatedIconsProps> = ({ sx, deprecated }) => {

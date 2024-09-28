@@ -22,7 +22,7 @@ export const MethodCoveragesTableRow: FC<MethodCoveragesTableRowProps> = (props)
       cells={[
         { value: <MethodCell coverage={coverage} /> },
         { value: <CoveredIcons covered={coverage.covered} /> },
-        { value: coverage.totalCases },
+        { value: coverage.totalCases || 0 },
         { value: <TotalRequestParametersCompareCell coverage={coverage.requestCoverage} /> },
         { value: <TotalRequestParametersCompareCell coverage={coverage.responseCoverage} /> },
         {

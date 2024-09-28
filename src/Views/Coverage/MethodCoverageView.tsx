@@ -25,7 +25,7 @@ export const MethodCoverageView: FC<MethodCoverageViewProps> = ({ coverage }) =>
           value={coverage.deprecated ? 'yes' : 'no'}
           allowCopy={false}
         />
-        <BaseInfoRowView name={'Total covered cases'} value={coverage.totalCases} />
+        <BaseInfoRowView name={'Total covered cases'} value={coverage.totalCases || 0} />
       </WidgetInfoRowsView>
     </WidgetView>
   );

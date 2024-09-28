@@ -27,7 +27,11 @@ const InitialStateProvider: FC<PropsWithChildren> = ({ children }) => {
     const initialState = loadInitialState();
     for (const service of initialState.config.services || []) {
       const serviceCoverage = initialState.serviceCoverages[service.host];
-      serviceCoverage.totalCoverage > 0 && setService(service);
+
+      if (serviceCoverage.totalCoverage && serviceCoverage.totalCoverage > 0) {
+        setService(service);
+        break;
+      }
     }
 
     setState(initialState);

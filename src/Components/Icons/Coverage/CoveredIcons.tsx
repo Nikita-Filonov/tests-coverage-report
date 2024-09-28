@@ -6,7 +6,7 @@ import { Theme } from '@mui/material';
 
 type CoveredIconsProps = {
   sx?: SxProps<Theme>;
-  covered: boolean;
+  covered?: boolean;
 };
 
 export const CoveredIcons: FC<CoveredIconsProps> = ({ sx, covered }) => {

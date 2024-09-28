@@ -11,7 +11,7 @@ export const TotalLogicalServiceCoveragesChartView = () => {
       <BasePieChart
         series={logicalServicesCoverage.map((coverage) => ({
           label: getServiceLabel(coverage.logicalService),
-          value: coverage.totalCoverage
+          value: coverage.totalCoverage || 0
         }))}
       />
     </BaseChartView>

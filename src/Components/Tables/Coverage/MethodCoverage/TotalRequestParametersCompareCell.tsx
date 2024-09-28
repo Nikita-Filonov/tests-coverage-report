@@ -4,7 +4,7 @@ import { TotalCoverageIcons } from '../../../Icons/Coverage/TotalCoverageIcons';
 import { BaseTableCell } from '../../BaseTableCell';
 
 type TotalRequestParametersCompareCellProps = {
-  coverage: MethodRequestCoverage;
+  coverage?: MethodRequestCoverage;
 };
 
 export const TotalRequestParametersCompareCell: FC<TotalRequestParametersCompareCellProps> = (props) => {
@@ -12,8 +12,8 @@ export const TotalRequestParametersCompareCell: FC<TotalRequestParametersCompare
 
   return (
     <BaseTableCell
-      text={`${coverage.totalParameters} / ${coverage.totalCoveredParameters} — ${coverage.totalCoverage}%`}
-      icon={<TotalCoverageIcons totalCoverage={coverage.totalCoverage} />}
+      text={`${coverage?.totalParameters || 0} / ${coverage?.totalCoveredParameters || 0} — ${coverage?.totalCoverage || 0}%`}
+      icon={<TotalCoverageIcons totalCoverage={coverage?.totalCoverage || 0} />}
     />
   );
 };
