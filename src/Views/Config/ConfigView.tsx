@@ -9,7 +9,7 @@ export const ConfigView = () => {
   const { service, createdAt } = useInitialState();
 
   return (
-    <WidgetView sx={{ mt: 3, height: 250 }} title={'Config'}>
+    <WidgetView sx={{ mt: 3 }} title={'Config'}>
       <WidgetInfoRowsView>
         <BaseInfoRowView name={'Service name'} value={service.name} />
         <BaseInfoRowView name={'Service host'} value={service.host} />

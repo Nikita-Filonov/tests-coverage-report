@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { WidgetView } from '../../Components/Views/WidgetView';
-import { BaseInfoRowView } from '../../Components/Views/BaseInfoRowView';
-import { MethodCoverage } from '../../Models/Coverage/MethodCoverage';
-import { CoveredIcons } from '../../Components/Icons/Coverage/CoveredIcons';
-import { WidgetInfoRowsView } from '../../Components/Views/WidgetInfoRowsView';
-import { DeprecatedIcons } from '../../Components/Icons/Coverage/DeprecatedIcons';
+import { WidgetView } from '../../../Components/Views/WidgetView';
+import { BaseInfoRowView } from '../../../Components/Views/BaseInfoRowView';
+import { MethodCoverage } from '../../../Models/Coverage/MethodCoverage';
+import { CoveredIcons } from '../../../Components/Icons/Coverage/CoveredIcons';
+import { WidgetInfoRowsView } from '../../../Components/Views/WidgetInfoRowsView';
+import { DeprecatedIcons } from '../../../Components/Icons/Coverage/DeprecatedIcons';
 
 type MethodCoverageViewProps = {
   coverage: MethodCoverage;

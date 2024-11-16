@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useEffect, useState } from 'react';
-import { InitialState, loadInitialState } from '../State/Controllers';
+import { DEFAULT_SERVICE, InitialState, loadInitialState } from '../State/Controllers';
 import { ServiceCoverage } from '../Models/Coverage/ServiceCoverage';
 import { LogicalServiceCoverage } from '../Models/Coverage/LogicalServiceCoverage';
 import { Service } from '../Models/Config/Config';
@@ -17,7 +17,7 @@ const InitialStateContext = React.createContext<InitialStateContextProps | null>
 
 const InitialStateProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, setState] = useState<InitialState>(loadInitialState());
-  const [service, setService] = useState<Service>({ name: '', host: '', repository: '' });
+  const [service, setService] = useState<Service>(DEFAULT_SERVICE);
 
   useEffect(() => {
     loadState();
@@ -26,7 +26,7 @@ const InitialStateProvider: FC<PropsWithChildren> = ({ children }) => {
   const loadState = () => {
     const initialState = loadInitialState();
     for (const service of initialState.config.services || []) {
-      const serviceCoverage = initialState.serviceCoverages[service.host];
+      const serviceCoverage = initialState.serviceCoverages[service.key];
 
       if (serviceCoverage.totalCoverage && serviceCoverage.totalCoverage > 0) {
         setService(service);
@@ -44,8 +44,8 @@ const InitialStateProvider: FC<PropsWithChildren> = ({ children }) => {
         services: state.config.services || [],
         createdAt: state.createdAt,
         setService,
-        serviceCoverage: state.serviceCoverages[service.host] || { totalCoverage: 0 },
-        logicalServicesCoverage: state.logicalServiceCoverages[service.host] || []
+        serviceCoverage: state.serviceCoverages[service.key] || { totalCoverage: 0 },
+        logicalServicesCoverage: state.logicalServiceCoverages[service.key] || []
       }}>
       {children}
     </InitialStateContext.Provider>

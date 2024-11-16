@@ -3,18 +3,20 @@ import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
 import { InitialStateProvider } from './Providers/InitialStateProvider';
 import { MainLayout } from './Components/Layouts/MainLayout';
-import { LogicalServiceCoveragesView } from './Views/Coverage/LogicalServiceCoveragesView';
+import { LogicalServiceCoveragesView } from './Views/Coverage/LogicalServiceCoverage/LogicalServiceCoveragesView';
 import { MethodCoveragesProvider } from './Providers/MethodCoveragesProvider';
-import { TotalLogicalServiceCoveragesChartView } from './Views/Coverage/TotalLogicalServiceCoveragesChartView';
+import { TotalLogicalServiceCoveragesChartView } from './Views/Coverage/LogicalServiceCoverage/TotalLogicalServiceCoveragesChartView';
 import { ThemeProvider } from './Providers/ThemeProvider';
 import { AppToolbarView } from './Components/Toolbar/AppToolbarView';
-import { ServiceConfigWithCoverageView } from './Views/ServiceConfigWithCoverageView';
+import { ConfigView } from './Views/Config/ConfigView';
+import { ServiceView } from './Views/Coverage/ServiceCoverage/ServiceView';
 
 const IndexRoute = () => {
   return (
     <MainLayout>
       <AppToolbarView />
-      <ServiceConfigWithCoverageView />
+      <ConfigView />
+      <ServiceView />
       <TotalLogicalServiceCoveragesChartView />
       <LogicalServiceCoveragesView />
     </MainLayout>

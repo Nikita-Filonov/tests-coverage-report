@@ -2,8 +2,8 @@ import { BaseModal } from '../BaseModal';
 import { FC } from 'react';
 import { Button } from '@mui/material';
 import { useMethodCoveragesFilters } from '../../../Providers/MethodCoveragesFiltersProvider';
-import { MethodCoverageFiltersView } from '../../../Views/Coverage/MethodCoverageFilters/MethodCoverageFiltersView';
-import { MethodCoverageDeprecationView } from '../../../Views/Coverage/MethodCoverageFilters/MethodCoverageDeprecationView';
+import { MethodCoverageFiltersView } from '../../../Views/Coverage/MethodCoverage/MethodCoverageFiltersView';
+import { MethodCoverageDeprecationView } from '../../../Views/Coverage/MethodCoverage/MethodCoverageDeprecationView';
 
 type MethodCoveragesFiltersModalProps = {
   modal: boolean;

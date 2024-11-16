@@ -1,8 +1,8 @@
 import { BaseModal } from '../BaseModal';
 import { FC } from 'react';
 import { useMethodCoverages } from '../../../Providers/MethodCoveragesProvider';
-import { MethodCoverageView } from '../../../Views/Coverage/MethodCoverageView';
-import { MethodRequestCoverageView } from '../../../Views/Coverage/MethodRequestCoverageView';
+import { MethodCoverageView } from '../../../Views/Coverage/MethodCoverage/MethodCoverageView';
+import { MethodRequestCoverageView } from '../../../Views/Coverage/MethodCoverage/MethodRequestCoverageView';
 
 type MethodCoverageDetailsModalProps = {
   modal: boolean;

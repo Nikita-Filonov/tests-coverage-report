@@ -1,7 +1,7 @@
-import { BaseChartView } from '../../Components/Charts/BaseChartView';
-import { BasePieChart } from '../../Components/Charts/BasePieChart';
-import { getServiceLabel } from '../../Services/Charts/Utils';
-import { useInitialState } from '../../Providers/InitialStateProvider';
+import { BaseChartView } from '../../../Components/Charts/BaseChartView';
+import { BasePieChart } from '../../../Components/Charts/BasePieChart';
+import { getServiceLabel } from '../../../Services/Charts/Utils';
+import { useInitialState } from '../../../Providers/InitialStateProvider';
 
 export const TotalLogicalServiceCoveragesChartView = () => {
   const { logicalServicesCoverage } = useInitialState();
