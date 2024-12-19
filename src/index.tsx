@@ -5,7 +5,7 @@ import { InitialStateProvider } from './Providers/InitialStateProvider';
 import { MainLayout } from './Components/Layouts/MainLayout';
 import { LogicalServiceCoveragesView } from './Views/Coverage/LogicalServiceCoverage/LogicalServiceCoveragesView';
 import { MethodCoveragesProvider } from './Providers/MethodCoveragesProvider';
-import { TotalLogicalServiceCoveragesChartView } from './Views/Coverage/LogicalServiceCoverage/TotalLogicalServiceCoveragesChartView';
+import { TotalLogicalServiceCoveragesView } from './Views/Coverage/LogicalServiceCoverage/TotalLogicalServiceCoveragesView';
 import { ThemeProvider } from './Providers/ThemeProvider';
 import { AppToolbarView } from './Components/Toolbar/AppToolbarView';
 import { ConfigView } from './Views/Config/ConfigView';
@@ -17,7 +17,7 @@ const IndexRoute = () => {
       <AppToolbarView />
       <ConfigView />
       <ServiceView />
-      <TotalLogicalServiceCoveragesChartView />
+      <TotalLogicalServiceCoveragesView />
       <LogicalServiceCoveragesView />
     </MainLayout>
   );

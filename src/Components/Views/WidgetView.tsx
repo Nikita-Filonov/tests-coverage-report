@@ -12,6 +12,7 @@ type WidgetAction = {
 };
 
 type WidgetViewProps = {
+  id?: string;
   sx?: SxProps<Theme>;
   title?: string | ReactNode;
   actions?: WidgetAction[];
@@ -20,10 +21,10 @@ type WidgetViewProps = {
 };
 
 export const WidgetView: FC<WidgetViewProps> = (props) => {
-  const { sx, title, actions, children, childrenSx } = props;
+  const { id, sx, title, actions, children, childrenSx } = props;
 
   return (
-    <BasePaper sx={sx}>
+    <BasePaper id={id} sx={sx}>
       <Grid2 container sx={{ display: 'flex', alignItems: 'center' }}>
         <Grid2 sx={{ flexGrow: 1 }}>
           {title && (

@@ -9,3 +9,5 @@ export const getCoverageColor = (coverage: number): 'error' | 'success' | 'warni
 
   return 'success';
 };
+
+export const getLogicalServiceCoverageWidgetId = (service: string): string => `${service}-widget`;

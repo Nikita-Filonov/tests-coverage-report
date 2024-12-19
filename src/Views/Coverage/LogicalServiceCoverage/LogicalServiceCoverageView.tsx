@@ -9,9 +9,10 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { useMethodCoveragesFilters } from '../../../Providers/MethodCoveragesFiltersProvider';
 import { MethodCoveragesFiltersModal } from '../../../Components/Modals/Coverage/MethodCoveragesFiltersModal';
 import { countNotNullValues } from '../../../Services/Core/Utils';
-import { MethodCoveragesTable } from '../../../Components/Tables/Coverage/MethodCoverage/MethodCoveragesTable';
 import { BaseTabs } from '../../../Components/Tabs/BaseTabs';
 import { CoverageHistoryChartView } from '../../History/CoverageHistoryChartView';
+import { getLogicalServiceCoverageWidgetId } from '../../../Services/Coverage/Utils';
+import { MethodCoveragesView } from '../MethodCoverage/MethodCoveragesView';
 
 type LogicalServiceCoverageViewProps = {
   coverage: LogicalServiceCoverage;
@@ -34,6 +35,7 @@ export const LogicalServiceCoverageView: FC<LogicalServiceCoverageViewProps> = (
   return (
     <WidgetView
       sx={{ mt: 3 }}
+      id={getLogicalServiceCoverageWidgetId(coverage.logicalService)}
       title={coverage.logicalService}
       actions={[
         { content: <LogicalServiceCoverageProgress value={coverage?.totalCoverage || 0} /> },
@@ -48,7 +50,7 @@ export const LogicalServiceCoverageView: FC<LogicalServiceCoverageViewProps> = (
           {
             label: 'Coverage',
             content: (
-              <MethodCoveragesTable coverages={filteredCoverages} onMethodCoverageDetails={onMethodCoverageDetails} />
+              <MethodCoveragesView coverages={filteredCoverages} onMethodCoverageDetails={onMethodCoverageDetails} />
             )
           },
           {

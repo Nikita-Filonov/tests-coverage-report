@@ -14,7 +14,7 @@ type BaseTableRowProps = {
 
 export const BaseTableRow: FC<BaseTableRowProps> = ({ cells }) => {
   return (
-    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+    <TableRow hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
       {cells.map((cell, index) => (
         <TableCell key={index} align={cell.align || 'left'}>
           {cell.value}

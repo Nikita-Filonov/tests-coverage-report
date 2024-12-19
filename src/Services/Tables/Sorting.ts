@@ -6,8 +6,8 @@ function descendingComparator<T>(a: T, b: T, orderBy: string | null): number {
     return 0;
   }
 
-  const aValue = _.get(a, orderBy);
-  const bValue = _.get(b, orderBy);
+  const aValue = _.get(a, orderBy) || 0;
+  const bValue = _.get(b, orderBy) || 0;
 
   if (bValue < aValue) {
     return -1;

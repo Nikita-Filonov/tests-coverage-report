@@ -1,4 +1,4 @@
-import { AreaPlot, LinePlot, MarkPlot } from '@mui/x-charts/LineChart';
+import { BarPlot } from '@mui/x-charts/BarChart';
 import {
   ChartsAxisHighlight,
   ChartsGrid,
@@ -10,35 +10,33 @@ import {
 } from '@mui/x-charts';
 import { AxisValueFormatterContext } from '@mui/x-charts/internals';
 
-export interface LineChartYAxis {
+interface BarChartYAxis {
   data: (null | number)[];
   label: string;
   color?: string;
 }
 
-export interface LineChartXAxis<T> {
+interface BarChartXAxis<T> {
   data: T[];
   scaleType: 'time' | 'band';
   valueFormatter?: (value: T, context: AxisValueFormatterContext) => string;
 }
 
 type BaseLineChartProps<T> = {
-  xAxis: LineChartXAxis<T>[];
-  yAxis: LineChartYAxis[];
+  xAxis: BarChartXAxis<T>[];
+  yAxis: BarChartYAxis[];
 };
 
-export const BaseLineChart = <T,>({ xAxis, yAxis }: BaseLineChartProps<T>) => {
+export const BaseBarChart = <T,>({ xAxis, yAxis }: BaseLineChartProps<T>) => {
   return (
-    <ResponsiveChartContainer xAxis={xAxis} series={yAxis.map((axis) => ({ ...axis, type: 'line' }))}>
-      <MarkPlot />
-      <LinePlot />
-      <AreaPlot />
+    <ResponsiveChartContainer xAxis={xAxis} series={yAxis.map((axis) => ({ ...axis, type: 'bar' }))}>
+      <BarPlot />
       <ChartsGrid vertical={true} horizontal={true} />
       <ChartsXAxis />
       <ChartsYAxis />
       <ChartsLegend />
       <ChartsTooltip />
-      <ChartsAxisHighlight x={'line'} />
+      <ChartsAxisHighlight x={'band'} />
     </ResponsiveChartContainer>
   );
 };
