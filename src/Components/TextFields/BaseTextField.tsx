@@ -8,10 +8,11 @@ export type BaseTextFieldProps = {
   onChange: (value: string) => void;
   placeholder?: string;
   endAdornment?: ReactNode;
+  startAdornment?: ReactNode;
 };
 
 export const BaseTextField: FC<BaseTextFieldProps> = (props) => {
-  const { value, onChange, label, placeholder, sx, endAdornment } = props;
+  const { value, onChange, label, placeholder, sx, endAdornment, startAdornment } = props;
 
   const onInternalChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     onChange(event.target.value);
@@ -22,6 +23,7 @@ export const BaseTextField: FC<BaseTextFieldProps> = (props) => {
       <InputLabel>{label}</InputLabel>
       <OutlinedInput
         endAdornment={endAdornment}
+        startAdornment={startAdornment}
         value={value}
         label={label}
         onChange={onInternalChange}
