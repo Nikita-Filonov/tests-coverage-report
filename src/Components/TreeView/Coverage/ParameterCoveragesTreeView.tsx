@@ -15,7 +15,7 @@ export const ParameterCoveragesTreeView: FC<ParameterCoveragesTreeViewProps> = (
     <BoxView title={'Parameters coverage'}>
       <BaseTreeView sx={{ mt: 2 }}>
         {coverages.map((coverage, index) => (
-          <ParameterCoveragesTreeViewItem key={index} coverage={coverage} />
+          <ParameterCoveragesTreeViewItem key={index} tree={coverage.parameter} coverage={coverage} />
         ))}
       </BaseTreeView>
     </BoxView>

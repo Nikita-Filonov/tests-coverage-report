@@ -13,6 +13,7 @@ export const DEFAULT_SERVICE: Service = {
   key: '',
   name: '',
   host: '',
+  tags: [],
   repository: ''
 };
 

@@ -5,16 +5,17 @@ import { ParameterCoveragesTreeViewItemLabel } from './ParameterCoveragesTreeVie
 import { BaseTreeItem } from '../BaseTreeItem';
 
 type ParameterCoveragesTreeViewItemProps = {
+  tree: string;
   coverage: ParameterCoverage;
 };
 
 export const ParameterCoveragesTreeViewItem: FC<ParameterCoveragesTreeViewItemProps> = (props) => {
-  const { coverage } = props;
+  const { tree, coverage } = props;
 
   return (
-    <BaseTreeItem itemId={uuidv4()} label={<ParameterCoveragesTreeViewItemLabel coverage={coverage} />}>
+    <BaseTreeItem itemId={uuidv4()} label={<ParameterCoveragesTreeViewItemLabel tree={tree} coverage={coverage} />}>
       {coverage?.parameters?.map((coverage, index) => (
-        <ParameterCoveragesTreeViewItem key={index} coverage={coverage} />
+        <ParameterCoveragesTreeViewItem key={index} tree={`${tree}.${coverage.parameter}`} coverage={coverage} />
       ))}
     </BaseTreeItem>
   );

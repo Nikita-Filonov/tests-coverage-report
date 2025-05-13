@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import { FC, ReactNode } from 'react';
 import { Badge, Box, Grid2, SxProps, Theme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import { getActionMarginRight } from '../../Services/Views/Utils';
 
 type WidgetAction = {
   icon?: ReactNode;
@@ -23,6 +24,8 @@ type WidgetViewProps = {
 export const WidgetView: FC<WidgetViewProps> = (props) => {
   const { id, sx, title, actions, children, childrenSx } = props;
 
+  const getMarginRight = (index: number): number => getActionMarginRight({ index, actions, margin: 2 });
+
   return (
     <BasePaper id={id} sx={sx}>
       <Grid2 container sx={{ display: 'flex', alignItems: 'center' }}>
@@ -36,13 +39,13 @@ export const WidgetView: FC<WidgetViewProps> = (props) => {
         {actions?.map((action, index) => (
           <Grid2 key={index}>
             {action.icon ? (
-              <IconButton key={index} sx={{ mr: actions.length === index + 1 ? 0 : 2 }} onClick={action.onClick}>
+              <IconButton key={index} sx={{ mr: getMarginRight(index) }} onClick={action.onClick}>
                 <Badge badgeContent={action.badgeContent} color="primary">
                   {action.icon}
                 </Badge>
               </IconButton>
             ) : (
-              <Box key={index} sx={{ mr: actions.length === index + 1 ? 0 : 2 }}>
+              <Box key={index} sx={{ mr: getMarginRight(index) }}>
                 {action.content}
               </Box>
             )}
