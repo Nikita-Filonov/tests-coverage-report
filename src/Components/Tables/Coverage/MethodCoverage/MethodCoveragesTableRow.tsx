@@ -28,7 +28,11 @@ export const MethodCoveragesTableRow: FC<MethodCoveragesTableRowProps> = (props)
         {
           align: 'right',
           value: (
-            <IconButton size={'small'} onClick={onDetails} disabled={!coverage.covered}>
+            <IconButton
+              aria-label={`View ${coverage.method} details`}
+              size={'small'}
+              onClick={onDetails}
+              disabled={!coverage.covered}>
               <ArticleOutlinedIcon fontSize={'small'} />
             </IconButton>
           )
