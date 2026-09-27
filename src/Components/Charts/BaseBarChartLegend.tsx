@@ -1,0 +1,24 @@
+import { Box, Stack } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { FC } from 'react';
+import { BarChartYAxis } from './BaseBarChart';
+
+type Props = {
+  yAxis: BarChartYAxis[];
+};
+
+export const BaseBarChartLegend: FC<Props> = ({ yAxis }) => {
+  return (
+    <Stack
+      spacing={2}
+      direction={'row'}
+      sx={{ flexWrap: 'wrap', justifyContent: 'center', transform: 'translateY(-4px)' }}>
+      {yAxis.map((axis, index) => (
+        <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ width: 20, height: 20, bgcolor: axis.color, borderRadius: '2px', mr: 1 }} />
+          <Typography variant="body1">{axis.label}</Typography>
+        </Box>
+      ))}
+    </Stack>
+  );
+};
