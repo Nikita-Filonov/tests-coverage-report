@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        type: string
+        default: '24'
+        required: false
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: report
+          path: build/index.html
+          if-no-files-found: error
+          retention-days: 7

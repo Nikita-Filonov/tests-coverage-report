@@ -1,0 +1,30 @@
+name: 🧪 Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 🧹 lint
+    uses: ./.github/workflows/reusable-lint.yml
+
+  test:
+    name: 🧪 test
+    uses: ./.github/workflows/reusable-test.yml
+    needs: lint
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: 📦 build
+    uses: ./.github/workflows/reusable-build.yml
+    needs: lint
