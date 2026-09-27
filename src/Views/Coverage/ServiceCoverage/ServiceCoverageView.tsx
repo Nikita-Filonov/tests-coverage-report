@@ -7,7 +7,9 @@ export const ServiceCoverageView = () => {
   const { serviceCoverage } = useInitialState();
 
   return (
-    <BaseChartView title={'Total service coverage'}>
+    <BaseChartView
+      title={'Total service coverage'}
+      childrenSx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <BaseGaugeChart
         value={serviceCoverage.totalCoverage || 0}
         color={getCoverageColor(serviceCoverage.totalCoverage || 0)}
