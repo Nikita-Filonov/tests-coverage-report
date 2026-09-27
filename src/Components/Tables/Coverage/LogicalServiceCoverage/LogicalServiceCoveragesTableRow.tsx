@@ -30,7 +30,7 @@ export const LogicalServiceCoveragesTableRow: FC<LogicalServiceCoveragesTableRow
         {
           align: 'right',
           value: (
-            <IconButton size={'small'} onClick={scrollToService}>
+            <IconButton aria-label={`Scroll to ${coverage.logicalService}`} size={'small'} onClick={scrollToService}>
               <ArrowDownwardIcon fontSize={'small'} />
             </IconButton>
           )
