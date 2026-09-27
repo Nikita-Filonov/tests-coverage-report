@@ -9,6 +9,7 @@ type ToolbarAction = {
   icon?: ReactNode;
   content?: ReactNode;
   onClick?: () => void;
+  label?: string;
 };
 
 type BaseToolbarViewProps = {
@@ -25,13 +26,17 @@ export const BaseToolbarView: FC<BaseToolbarViewProps> = (props) => {
 
   return (
     <BasePaper sx={containerSx}>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', rowGap: 1 }}>
         {icon && <Box sx={{ mr: 2 }}>{icon}</Box>}
         <Typography variant={'h6'}>{title}</Typography>
         <Box sx={{ flexGrow: 1 }} />
         {actions.map((action, index) =>
           action.icon ? (
-            <IconButton key={index} sx={{ mr: getMarginRight(index) }} onClick={action.onClick}>
+            <IconButton
+              aria-label={action.label}
+              key={index}
+              sx={{ mr: getMarginRight(index) }}
+              onClick={action.onClick}>
               {action.icon}
             </IconButton>
           ) : (
