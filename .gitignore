@@ -24,3 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 
 ./coverage-report
+
+/build/*
+!/build/index.html
+*.tsbuildinfo
