@@ -12,12 +12,11 @@ type BaseGaugeChartProps = {
 };
 
 export const BaseGaugeChart: FC<BaseGaugeChartProps> = (props) => {
-  const { title, value, width, color, height, maxValue, fontSize } = props;
+  const { title, value, width, color, height, maxValue = 100, fontSize } = props;
 
   return (
     <Gauge
       sx={(theme) => ({
-        mt: 3,
         [`& .${gaugeClasses.valueText}`]: {
           fontSize: fontSize || 20
         },
@@ -29,7 +28,7 @@ export const BaseGaugeChart: FC<BaseGaugeChartProps> = (props) => {
       width={width}
       height={height}
       value={value}
-      valueMax={100}
+      valueMax={maxValue}
       startAngle={-110}
       endAngle={110}
       cornerRadius="50%"
