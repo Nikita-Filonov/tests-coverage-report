@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, OutlinedInput, SxProps, Theme } from '@mui/material';
-import { ChangeEvent, FC, ReactNode } from 'react';
+import { ChangeEvent, FC, ReactNode, useId } from 'react';
 
 export type BaseTextFieldProps = {
   sx?: SxProps<Theme>;
@@ -14,14 +14,17 @@ export type BaseTextFieldProps = {
 export const BaseTextField: FC<BaseTextFieldProps> = (props) => {
   const { value, onChange, label, placeholder, sx, endAdornment, startAdornment } = props;
 
+  const inputId = useId();
+
   const onInternalChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     onChange(event.target.value);
   };
 
   return (
     <FormControl sx={sx} size={'small'} variant="outlined" fullWidth>
-      <InputLabel>{label}</InputLabel>
+      <InputLabel htmlFor={inputId}>{label}</InputLabel>
       <OutlinedInput
+        id={inputId}
         endAdornment={endAdornment}
         startAdornment={startAdornment}
         value={value}
