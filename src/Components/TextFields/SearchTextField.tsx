@@ -27,7 +27,7 @@ export const SearchTextField: FC<SearchTextFieldProps> = (props) => {
       endAdornment={
         search.length > 0 && (
           <InputAdornment position="end">
-            <IconButton size={'small'} edge="end" onClick={onClear}>
+            <IconButton aria-label="Clear search" size={'small'} edge="end" onClick={onClear}>
               <CloseIcon fontSize={'small'} />
             </IconButton>
           </InputAdornment>
