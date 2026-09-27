@@ -42,6 +42,7 @@ export const LogicalServiceCoverageView: FC<LogicalServiceCoverageViewProps> = (
         {
           icon: <FilterAltOutlinedIcon />,
           onClick: onMethodCoveragesFilters,
+          label: `Filter ${coverage.logicalService} methods`,
           badgeContent: countNotNullValues(filters)
         }
       ]}>
