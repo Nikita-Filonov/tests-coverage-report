@@ -33,7 +33,7 @@ export const BaseModal: FC<BaseModalProps> = (props) => {
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <DialogTitle>{title}</DialogTitle>
         <Box sx={{ flexGrow: 1 }} />
-        <IconButton sx={{ mr: 2 }} onClick={onClose}>
+        <IconButton aria-label="Close dialog" sx={{ mr: 2 }} onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </Box>
