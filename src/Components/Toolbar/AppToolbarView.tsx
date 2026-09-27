@@ -17,7 +17,8 @@ export const AppToolbarView = () => {
         { content: <ServiceSelectionPopover /> },
         {
           icon: themeMode === ThemeMode.Dark ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />,
-          onClick: onThemeMode
+          onClick: onThemeMode,
+          label: 'Toggle theme'
         }
       ]}
       containerSx={{ mt: 3 }}
