@@ -37,7 +37,7 @@ export const ParameterCoveragesTreeViewItemLabel: FC<Props> = (props) => {
       <CoveredIcons sx={{ ml: 1 }} covered={coverage.covered} />
       <DeprecatedIcons sx={{ ml: 1 }} deprecated={coverage.hasUncoveredParameters} />
       {allowCopy && (
-        <IconButton sx={{ ml: 1, p: 0.4 }} size="small" onClick={onCopyTree}>
+        <IconButton aria-label={`Copy ${tree}`} sx={{ ml: 1, p: 0.4 }} size="small" onClick={onCopyTree}>
           <ContentCopyIcon sx={{ fontSize: 17 }} />
         </IconButton>
       )}
