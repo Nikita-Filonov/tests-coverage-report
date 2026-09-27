@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { FC, useId } from 'react';
 import { ParameterCoverage } from '../../../Models/Coverage/ParameterCoverage';
 import { ParameterCoveragesTreeViewItemLabel } from './ParameterCoveragesTreeViewItemLabel';
 import { BaseTreeItem } from '../BaseTreeItem';
@@ -11,9 +10,10 @@ type ParameterCoveragesTreeViewItemProps = {
 
 export const ParameterCoveragesTreeViewItem: FC<ParameterCoveragesTreeViewItemProps> = (props) => {
   const { tree, coverage } = props;
+  const itemId = useId();
 
   return (
-    <BaseTreeItem itemId={uuidv4()} label={<ParameterCoveragesTreeViewItemLabel tree={tree} coverage={coverage} />}>
+    <BaseTreeItem itemId={itemId} label={<ParameterCoveragesTreeViewItemLabel tree={tree} coverage={coverage} />}>
       {coverage?.parameters?.map((coverage, index) => (
         <ParameterCoveragesTreeViewItem key={index} tree={`${tree}.${coverage.parameter}`} coverage={coverage} />
       ))}
