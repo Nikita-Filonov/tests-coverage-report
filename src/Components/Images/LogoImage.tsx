@@ -1,4 +1,4 @@
-import { SettingsManager } from '../../Services/Config';
+import logo from '../../../static/logo.png';
 import React, { FC } from 'react';
 import { BaseImage } from './BaseImage';
 
@@ -8,5 +8,5 @@ type LogoImageProps = {
 };
 
 export const LogoImage: FC<LogoImageProps> = ({ width, height }) => {
-  return <BaseImage src={SettingsManager.getStaticFileUrl('logo.png')} width={width} height={height} />;
+  return <BaseImage src={logo} width={width} height={height} />;
 };
