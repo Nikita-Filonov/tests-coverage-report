@@ -18,7 +18,7 @@ export type BaseInfoRowViewProps = {
 export const BaseInfoRowView: FC<BaseInfoRowViewProps> = (props) => {
   const { name, icon, value, noWrap = false, allowCopy = true, component = false, containerSx } = props;
 
-  const internalValue = useMemo(() => value || 'unknown', [value]);
+  const internalValue = useMemo(() => value ?? 'unknown', [value]);
 
   const onCopy = async () => {
     await navigator.clipboard.writeText(String(value));
@@ -26,12 +26,12 @@ export const BaseInfoRowView: FC<BaseInfoRowViewProps> = (props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', ...containerSx }}>
-      <Typography noWrap={noWrap} sx={{ display: 'flex', alignItems: 'center' }}>
+      <Typography noWrap={noWrap} sx={{ display: 'flex', alignItems: 'center', minWidth: 0, overflowWrap: 'anywhere' }}>
         {name}: {component ? component : internalValue} {icon}
       </Typography>
       {Boolean(value) && allowCopy && (
         <Box sx={{ display: 'flex' }}>
-          <IconButton size={'small'} sx={{ ml: 1 }} onClick={onCopy}>
+          <IconButton aria-label={`Copy ${name}`} size={'small'} sx={{ ml: 1 }} onClick={onCopy}>
             <ContentCopyIcon fontSize={'small'} />
           </IconButton>
         </Box>
