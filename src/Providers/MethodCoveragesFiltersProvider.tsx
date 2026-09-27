@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, { Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useMemo, useState } from 'react';
 import { MethodCoverage } from '../Models/Coverage/MethodCoverage';
 
 export interface MethodCoveragesFilters extends Record<string, boolean> {
@@ -30,24 +30,17 @@ const MethodCoveragesFiltersContext = React.createContext<MethodCoveragesContext
 
 const MethodCoveragesFiltersProvider: FC<MethodCoveragesFiltersProviderProps> = ({ children, coverages }) => {
   const [filters, setFilters] = useState<MethodCoveragesFilters>(INITIAL_FILTERS);
-  const [filteredCoverages, setFilteredCoverages] = useState<MethodCoverage[]>(coverages);
-
-  useEffect(() => {
-    applyFilters();
-  }, [filters, coverages]);
-
-  const applyFilters = () => {
-    const newCoverages = coverages.filter((coverage) => {
-      const matchesCovered = (filters.showCovered && coverage.covered) || (filters.showNotCovered && !coverage.covered);
-
-      const matchesDeprecated =
-        (filters.showDeprecated && coverage.deprecated) || (filters.showNotDeprecated && !coverage.deprecated);
-
-      return matchesCovered && matchesDeprecated;
-    });
-
-    setFilteredCoverages(newCoverages);
-  };
+  const filteredCoverages = useMemo(
+    () =>
+      coverages.filter((coverage) => {
+        const matchesCovered =
+          (filters.showCovered && coverage.covered) || (filters.showNotCovered && !coverage.covered);
+        const matchesDeprecated =
+          (filters.showDeprecated && coverage.deprecated) || (filters.showNotDeprecated && !coverage.deprecated);
+        return matchesCovered && matchesDeprecated;
+      }),
+    [filters, coverages]
+  );
 
   const clearAllFilters = () => setFilters(INITIAL_FILTERS);
 
