@@ -7,7 +7,7 @@ type BasePaperProps = { id?: string; sx?: SxProps<Theme> } & PropsWithChildren;
 
 export const BasePaper: FC<BasePaperProps> = ({ children, id, sx }) => {
   return (
-    <Paper id={id} sx={{ p: 2, ...sx }}>
+    <Paper id={id} sx={{ minWidth: 0, p: 2, ...sx }}>
       {children}
     </Paper>
   );
